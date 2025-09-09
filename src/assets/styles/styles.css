@@ -1,0 +1,35 @@
+body {
+  background-color: rgb(53, 65, 84);
+  color: white;
+}
+
+
+.title {
+  display: flex;
+  justify-content: center;
+  margin: 2rem;
+}
+
+.inputForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 1rem;
+}
+
+/*
+TODO: media query --> column only on small screens (phone)
+on big screen, use row
+*/
+.images {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 1rem;
+}
+
+.copyright {
+  display: flex; 
+  justify-content: center;
+  font-weight: lighter;
+}
