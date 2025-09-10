@@ -8,6 +8,7 @@
   <base href=".">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
   <link href="assets/styles/styles.css" rel="stylesheet">
   <link href="libs/lightbox/css/lightbox.min.css" rel="stylesheet" />
 </head>
@@ -31,20 +32,20 @@
         <output for="numTrianglePoints" id="numTrianglePointsValue" aria-hidden="true"></output>
       </div>
       <div>
-        <button type="button" class="btn btn-primary" id="generateButton" disabled>Generate</button>
+        <button type="button" class="btn btn-primary btn-lg" id="generateButton" disabled>Generate</button>
       </div>
     </div>
 
     <div class="images">
       <div id="inputImage">
-        <p>Input</p>
-        <a id="inputImgAnchor" data-lightbox="lightbox-image" data-title="Input Image">
+        <p>Original Image</p>
+        <a id="inputImgAnchor" data-lightbox="lightbox-image" data-title="Original Image">
           <img id="inputImg">
         </a>
       </div>
       <div id="outputImage">
-        <p>Output</p>
-        <a id="outputImgAnchor" data-lightbox="lightbox-image" data-title="Output Image">
+        <p>Generated Image</p>
+        <a id="outputImgAnchor" data-lightbox="lightbox-image" data-title="Generated Image">
           <img id="outputImg">
         </a>
       </div>
@@ -54,6 +55,12 @@
   <footer>
     <div class="copyright">
       <p>Copyright &copy; 2025 <span id="year"></span>, Gianluca Moro</p>
+    </div>
+    <div class="socials">
+      <a href="https://www.linkedin.com/in/gianluca-moro/" target="_blank"><i class="bi bi-linkedin"></i></a>
+      <a href="https://github.com/gianluca-moro" target="_blank"><i class="bi-github"></i></a>
+      <a href="https://gianluca-moro.github.io/" target="_blank"><i class="bi bi-person-circle"></i></a>
+      
     </div>
   </footer>
 
