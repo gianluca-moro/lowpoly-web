@@ -13,7 +13,7 @@ header {
   .title {
     display: flex;
     justify-content: center;
-    margin: 2rem;
+    margin: 1rem 0.5rem;
   }
 }
 
@@ -23,11 +23,13 @@ footer {
   .copyright {
     display: flex;
     justify-content: center;
-    font-weight: lighter;
+    font-size: 80%;
+
+    p {
+      margin: 0.25rem;
+    }
   }
 }
-
-
 
 .inputForm {
   display: flex;
@@ -36,10 +38,6 @@ footer {
   row-gap: 1rem;
 }
 
-/*
-TODO: media query --> column only on small screens (phone)
-on big screen, use row
-*/
 @media (max-width: 1399px) {
   .images {
     display: flex;
@@ -69,7 +67,6 @@ on big screen, use row
 }
 
 .images {
-
   p {
     margin: 0;
     display: flex;
