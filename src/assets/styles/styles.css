@@ -1,14 +1,33 @@
 body {
   background-color: rgb(53, 65, 84);
   color: white;
+  min-height: 100vh;
+  margin: 0;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+header {
+  background: rebeccapurple;
+
+  .title {
+    display: flex;
+    justify-content: center;
+    margin: 2rem;
+  }
+}
+
+footer {
+  background: rebeccapurple;
+
+  .copyright {
+    display: flex;
+    justify-content: center;
+    font-weight: lighter;
+  }
 }
 
 
-.title {
-  display: flex;
-  justify-content: center;
-  margin: 2rem;
-}
 
 .inputForm {
   display: flex;
@@ -21,15 +40,43 @@ body {
 TODO: media query --> column only on small screens (phone)
 on big screen, use row
 */
-.images {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  row-gap: 1rem;
+@media (max-width: 1399px) {
+  .images {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 1rem;
+
+    img {
+      width: 700px;
+      max-width: 80vw;
+    }
+  }
 }
 
-.copyright {
-  display: flex; 
-  justify-content: center;
-  font-weight: lighter;
+@media (min-width: 1400px) {
+  .images {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    column-gap: 4rem;
+
+    img {
+      width: 900px;
+      max-width: 40vw;
+    }
+  }
+}
+
+.images {
+
+  p {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.hidden {
+  display: none;
 }

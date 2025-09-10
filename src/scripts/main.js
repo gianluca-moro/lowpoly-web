@@ -5,6 +5,11 @@ setUpForm();
 let numTriangulationPoints = 2500;
 let inputImgSrc = undefined;
 
+const inputImageContainer = document.getElementById("inputImage");
+inputImageContainer.classList.add("hidden");
+const outputImageContainer = document.getElementById("outputImage");
+outputImageContainer.classList.add("hidden");
+
 function setUpForm() {
   const generateButton = document.getElementById("generateButton");
 
@@ -12,9 +17,10 @@ function setUpForm() {
   imageInput.addEventListener("input", function () {
     if (this.files && this.files[0]) {
       inputImgSrc = URL.createObjectURL(this.files[0]);
-      const inputImg = document.getElementById("inputImg");
-      inputImg.src = inputImgSrc;
+      document.getElementById("inputImg").src = inputImgSrc;
+      document.getElementById("inputImgAnchor").href = inputImgSrc;
       generateButton.disabled = false;
+      inputImageContainer.classList.remove("hidden");
     }
   });
 
@@ -62,8 +68,10 @@ function generateLowPoly(src, numTriangulationPoints) {
 
     // create img from canvas
     outputCanvas.convertToBlob().then((blob) => {
-      const outputImg = document.getElementById("outputImg");
-      outputImg.src = URL.createObjectURL(blob);;
+      const outputSrc = URL.createObjectURL(blob);
+      const outputImg = document.getElementById("outputImg").src = outputSrc;
+      document.getElementById("outputImgAnchor").href = outputSrc;
+      outputImageContainer.classList.remove("hidden");
     });
   });
 }
