@@ -1,6 +1,8 @@
-import { generateLowPolyImageData } from "./lowpoly.js";
+import { generateLowPolyFromImageSrcUrl } from "./lowpoly.js";
 
 setUpForm();
+
+document.getElementById("downloadButton").onclick = download;
 
 let numTriangulationPoints = 2500;
 let inputImgSrc = undefined;
@@ -44,22 +46,23 @@ function setUpForm() {
     rangeOutput.textContent = this.value;
   });
 
-  generateButton.addEventListener("click", () => {
+  generateButton.onclick = () => {
     if (!inputImgSrc) {
       alert("No image selected");
       return;
     }
+    generateButton.disabled = true;
     generateLowPoly(inputImgSrc, numTriangulationPoints);
-  });
+  };
+}
 
-  document.getElementById("downloadButton").addEventListener("click", () => {
-    const link = document.createElement('a');
-    link.href = document.getElementById("outputImg").src;
-    link.download = 'low-poly-' + (inputImgName ?? '.png');
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  });
+function download() {
+  const link = document.createElement('a');
+  link.href = document.getElementById("outputImg").src;
+  link.download = 'low-poly-' + (inputImgName ?? '.png');
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
 }
 
 function generateLowPoly(src, numTriangulationPoints) {
@@ -68,14 +71,8 @@ function generateLowPoly(src, numTriangulationPoints) {
   const imageWidth = inputImage.width;
   const imageHeight = inputImage.height;
 
-  // create canvas for input img to get imageData
-  const canvas = new OffscreenCanvas(imageWidth, imageHeight)
-  const ctx = canvas.getContext("2d");
-  ctx.drawImage(inputImage, 0, 0, imageWidth, imageHeight);
-  const imageData = ctx.getImageData(0, 0, imageWidth, imageHeight);
-
   // generate low poly data
-  const lowPolyImageData = generateLowPolyImageData(imageData, numTriangulationPoints);
+  const lowPolyImageData = generateLowPolyFromImageSrcUrl(src, numTriangulationPoints);
 
   // create canvas and draw image
   const outputCanvas = new OffscreenCanvas(imageWidth, imageHeight);
@@ -88,5 +85,6 @@ function generateLowPoly(src, numTriangulationPoints) {
     document.getElementById("outputImg").src = outputSrc;
     document.getElementById("outputImgAnchor").href = outputSrc;
     outputImageContainer.classList.remove("hidden");
+    generateButton.disabled = false;
   });
 }
