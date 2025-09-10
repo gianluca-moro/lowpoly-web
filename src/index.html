@@ -37,17 +37,23 @@
     </div>
 
     <div class="images">
-      <div id="inputImage">
+      <div id="inputImage" class="hidden">
         <p>Original Image</p>
         <a id="inputImgAnchor" data-lightbox="lightbox-image" data-title="Original Image">
           <img id="inputImg">
         </a>
       </div>
-      <div id="outputImage">
+      <div id="outputImage" class="hidden">
         <p>Generated Image</p>
         <a id="outputImgAnchor" data-lightbox="lightbox-image" data-title="Generated Image">
           <img id="outputImg">
         </a>
+        <div class="download">
+          <button id="downloadButton" type="button" class="btn btn-primary btn-lg">
+            <i class="bi bi-download" style="margin-right: 0.75rem;"></i>
+            Download
+          </button>
+        </div>
       </div>
     </div>
   </main>
@@ -60,7 +66,6 @@
       <a href="https://www.linkedin.com/in/gianluca-moro/" target="_blank"><i class="bi bi-linkedin"></i></a>
       <a href="https://github.com/gianluca-moro" target="_blank"><i class="bi-github"></i></a>
       <a href="https://gianluca-moro.github.io/" target="_blank"><i class="bi bi-person-circle"></i></a>
-      
     </div>
   </footer>
 

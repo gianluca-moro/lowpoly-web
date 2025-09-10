@@ -4,6 +4,7 @@ setUpForm();
 
 let numTriangulationPoints = 2500;
 let inputImgSrc = undefined;
+let inputImgName = undefined;
 
 const inputImageContainer = document.getElementById("inputImage");
 inputImageContainer.classList.add("hidden");
@@ -22,6 +23,7 @@ function setUpForm() {
   });
   imageInput.addEventListener("input", function () {
     if (this.files && this.files[0]) {
+      inputImgName = this.files[0].name;
       inputImgSrc = URL.createObjectURL(this.files[0]);
       inputImg.src = inputImgSrc;
       document.getElementById("inputImgAnchor").href = inputImgSrc;
@@ -49,19 +51,27 @@ function setUpForm() {
     }
     generateLowPoly(inputImgSrc, numTriangulationPoints);
   });
+
+  document.getElementById("downloadButton").addEventListener("click", () => {
+    const link = document.createElement('a');
+    link.href = document.getElementById("outputImg").src;
+    link.download = 'low-poly-' + (inputImgName ?? '.png');
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  });
 }
 
 function generateLowPoly(src, numTriangulationPoints) {
-  // load input image
-  const inputImg = document.getElementById("inputImg");
-  inputImg.src = src;
-  const imageWidth = inputImg.width;
-  const imageHeight = inputImg.height;
+  const inputImage = new Image();
+  inputImage.src = src;
+  const imageWidth = inputImage.width;
+  const imageHeight = inputImage.height;
 
   // create canvas for input img to get imageData
   const canvas = new OffscreenCanvas(imageWidth, imageHeight)
   const ctx = canvas.getContext("2d");
-  ctx.drawImage(inputImg, 0, 0, imageWidth, imageHeight);
+  ctx.drawImage(inputImage, 0, 0, imageWidth, imageHeight);
   const imageData = ctx.getImageData(0, 0, imageWidth, imageHeight);
 
   // generate low poly data
@@ -75,7 +85,7 @@ function generateLowPoly(src, numTriangulationPoints) {
   // create img from canvas
   outputCanvas.convertToBlob().then((blob) => {
     const outputSrc = URL.createObjectURL(blob);
-    const outputImg = document.getElementById("outputImg").src = outputSrc;
+    document.getElementById("outputImg").src = outputSrc;
     document.getElementById("outputImgAnchor").href = outputSrc;
     outputImageContainer.classList.remove("hidden");
   });

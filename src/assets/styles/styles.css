@@ -111,6 +111,12 @@ footer {
     border: thin solid whitesmoke;
     border-radius: 10px;
   }
+
+  .download {
+    display: flex;
+    justify-content: center;
+    margin-top: 0.5rem;
+  }
 }
 
 .hidden {
