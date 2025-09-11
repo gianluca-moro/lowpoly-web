@@ -5,6 +5,18 @@ body {
   margin: 0;
   display: grid;
   grid-template-rows: auto 1fr auto;
+
+  /* Chrome, Safari, Edge, Opera */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  input[type=number] {
+    -moz-appearance: textfield;
+  }
 }
 
 header {
@@ -48,57 +60,28 @@ footer {
   }
 }
 
-@media (min-width: 900px) {
-  footer {
-    justify-content: center;
-    column-gap: 5rem;
-    padding: 0.75rem;
-  }
-}
-
-@media (max-width: 899px) {
-  footer {
-    justify-content: space-between;
-    padding: 0.1rem 1rem;
-  }
-}
 
 
 
-.inputForm {
+.inputFormContainer {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  row-gap: 1rem;
-}
+  justify-content: center;
 
-@media (max-width: 1399px) {
-  .images {
+
+  .inputForm {
     display: flex;
     flex-direction: column;
-    align-items: center;
     row-gap: 1rem;
-
-    img {
-      width: 700px;
-      max-width: 80vw;
-    }
+    width: 40%;
   }
-}
 
-@media (min-width: 1400px) {
-  .images {
+  .generateButton {
     display: flex;
-    flex-direction: row;
     justify-content: center;
-    column-gap: 4rem;
-
-    img {
-      width: 900px;
-      max-width: 40vw;
-    }
   }
 }
+
+
 
 .images {
   p {
@@ -121,4 +104,60 @@ footer {
 
 .hidden {
   display: none;
+}
+
+
+
+
+@media (min-width: 900px) {
+  footer {
+    justify-content: center;
+    column-gap: 5rem;
+    padding: 0.75rem;
+  }
+}
+
+
+
+@media (max-width: 1399px) {
+  .images {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 1rem;
+
+    img {
+      width: 700px;
+      max-width: 80vw;
+    }
+  }
+
+  .inputFormContainer .inputForm {
+    width: 60%;
+  }
+}
+
+@media (max-width: 899px) {
+  footer {
+    justify-content: space-between;
+    padding: 0.1rem 1rem;
+  }
+
+  .inputFormContainer .inputForm {
+    width: 100%;
+  }
+}
+
+@media (min-width: 1400px) {
+  .images {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    column-gap: 4rem;
+
+    img {
+      width: 900px;
+      max-width: 40vw;
+    }
+  }
 }
