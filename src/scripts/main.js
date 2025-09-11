@@ -16,8 +16,8 @@ inputImageContainer.classList.add('hidden');
 const outputImageContainer = document.getElementById('outputImage');
 outputImageContainer.classList.add('hidden');
 const generateButton = document.getElementById('generateButton');
-
-document.getElementById('downloadButton').onclick = download;
+const downloadButton = document.getElementById('downloadButton');
+downloadButton.onclick = download;
 
 setUpForm();
 
@@ -102,7 +102,11 @@ function generateLowPoly(src, numTriangulationPoints) {
   // create img from canvas
   outputCanvas.convertToBlob().then((blob) => {
     const outputSrc = URL.createObjectURL(blob);
-    document.getElementById('outputImg').src = outputSrc;
+    const outputImg = document.getElementById('outputImg');
+    outputImg.onload = () => {
+      downloadButton.scrollIntoView(false);
+    };
+    outputImg.src = outputSrc;
     document.getElementById('outputImgAnchor').href = outputSrc;
     outputImageContainer.classList.remove('hidden');
     generateButton.disabled = false;
