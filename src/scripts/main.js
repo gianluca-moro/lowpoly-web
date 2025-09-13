@@ -104,7 +104,7 @@ function generateLowPoly(src, numTriangulationPoints) {
     const outputSrc = URL.createObjectURL(blob);
     const outputImg = document.getElementById('outputImg');
     outputImg.onload = () => {
-      downloadButton.scrollIntoView(false);
+      downloadButton.scrollIntoView({block: "end", inline: "nearest", behavior: 'smooth'});
     };
     outputImg.src = outputSrc;
     document.getElementById('outputImgAnchor').href = outputSrc;

@@ -1,10 +1,8 @@
 body {
+  margin: 0;
+  height: 100%;
   background-color: rgb(53, 65, 84);
   color: white;
-  min-height: 100vh;
-  margin: 0;
-  display: grid;
-  grid-template-rows: auto 1fr auto;
 
   /* Chrome, Safari, Edge, Opera */
   input::-webkit-outer-spin-button,
@@ -19,15 +17,55 @@ body {
   }
 }
 
+#wrapper {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+#content {
+  overflow-y: scroll;
+}
+
 header {
   background: rebeccapurple;
 
   .title {
     display: flex;
     justify-content: center;
-    margin: 1rem 0.5rem;
+    margin: 0.5rem 0.5rem;
+  }
+
+  .nav {
+    display: grid;
+    grid-template-columns: 10rem 10rem 10rem;
+    width: 100vw;
+    overflow: auto;
+
+    .navItem {
+      display: flex;
+      justify-content: center;
+      cursor: pointer;
+
+      &:hover {
+        color: whitesmoke;
+        background-color: rgb(74, 37, 112);
+      }
+
+      a {
+        text-decoration: none;
+        color: lightgray;
+      }
+    }
+
+    .active {
+      font-weight: bolder;
+      color: white;
+      border-bottom: 2px solid lightgray;
+    }
   }
 }
+
 
 footer {
   display: flex;
@@ -59,8 +97,6 @@ footer {
     }
   }
 }
-
-
 
 
 .inputFormContainer {
@@ -108,6 +144,13 @@ footer {
 
 
 
+@media (min-width: 481px) {
+  header {
+    .nav {
+      justify-content: center;
+    }
+  }
+}
 
 @media (min-width: 900px) {
   footer {
@@ -116,8 +159,6 @@ footer {
     padding: 0.75rem;
   }
 }
-
-
 
 @media (max-width: 1399px) {
   .images {

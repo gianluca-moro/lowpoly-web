@@ -9,71 +9,88 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-  <link href="assets/styles/styles.css" rel="stylesheet">
+  <link href="assets/styles/styles-copy.css" rel="stylesheet">
   <link href="libs/lightbox/css/lightbox.min.css" rel="stylesheet" />
 </head>
 
 <body>
-  <header>
-    <div class="title">
-      <h1>Low-Poly Image Converter</h1>
-    </div>
-  </header>
+  <div id="wrapper">
+    <header id="header">
+      <div class="title">
+        <h1>Low-Poly Image Converter</h1>
+      </div>
+      <div class="nav">
+        <div class="navItem"><a href="#generator">Generator</a></div>
+        <div class="navItem"><a href="#examples">Examples</a></div>
+        <div class="navItem"><a href="#source-code">Source Code</a></div>
+      </div>
+    </header>
 
-  <main class="m-3">
-    <div class="inputFormContainer mb-5">
-      <div class="inputForm">
-        <div>
-          <label for="formFile" class="form-label">Select Image</label>
-          <input class="form-control" type="file" id="imageInput" accept=".png,.jpg,.jpeg">
-        </div>
-        <div class="row g-3 align-items-center">
-          <div class="col-auto">
-            <label for="numTrianglePoints" class="col-form-label">Number of Triangulation Points: </label>
+    <div id="content">
+      <section class="section" data-section="generator" id="generator">
+        <div class="inputFormContainer mb-5">
+          <div class="inputForm">
+            <div>
+              <label for="formFile" class="form-label">Select Image</label>
+              <input class="form-control" type="file" id="imageInput" accept=".png,.jpg,.jpeg">
+            </div>
+            <div class="row g-3 align-items-center">
+              <div class="col-auto">
+                <label for="numTrianglePoints" class="col-form-label">Number of Triangulation Points: </label>
+              </div>
+              <div class="col-auto">
+                <input type="number" min="250" max="10000" step="1" id="numTrianglePointsValue" class="form-control">
+              </div>
+            </div>
+            <input type="range" class="form-range" min="250" max="10000" value="5000" id="numTrianglePointsSlider">
+            <div class="generateButton">
+              <button type="button" class="btn btn-primary btn-lg" id="generateButton" disabled>Generate</button>
+            </div>
           </div>
-          <div class="col-auto">
-            <input type="number" min="250" max="10000" step="1" id="numTrianglePointsValue" class="form-control">
+        </div>
+
+        <div class="images">
+          <div id="inputImage" class="hidden">
+            <p>Original Image</p>
+            <a id="inputImgAnchor" data-lightbox="lightbox-image" data-title="Original Image">
+              <img id="inputImg">
+            </a>
+          </div>
+          <div id="outputImage" class="hidden">
+            <p>Generated Image</p>
+            <a id="outputImgAnchor" data-lightbox="lightbox-image" data-title="Generated Image">
+              <img id="outputImg">
+            </a>
+            <div class="download">
+              <button id="downloadButton" type="button" class="btn btn-primary btn-lg">
+                <i class="bi bi-download" style="margin-right: 0.75rem;"></i>
+                Download
+              </button>
+            </div>
           </div>
         </div>
-        <input type="range" class="form-range" min="250" max="10000" value="5000" id="numTrianglePointsSlider">
-        <div class="generateButton">
-          <button type="button" class="btn btn-primary btn-lg" id="generateButton" disabled>Generate</button>
-        </div>
-      </div>
+      </section>
+
+      <section class="section" data-section="examples" id="examples">
+        <h1 style="height: 800px;">EXAMPLES</h1>
+      </section>
+
+      <section class="section" data-section="source-code" id="source-code">
+        <h1>Source Code</h1>
+      </section>
     </div>
 
-    <div class="images">
-      <div id="inputImage" class="hidden">
-        <p>Original Image</p>
-        <a id="inputImgAnchor" data-lightbox="lightbox-image" data-title="Original Image">
-          <img id="inputImg">
-        </a>
+    <footer id="footer">
+      <div class="copyright">
+        <p>Copyright &copy; 2025 <span id="year"></span>, Gianluca Moro</p>
       </div>
-      <div id="outputImage" class="hidden">
-        <p>Generated Image</p>
-        <a id="outputImgAnchor" data-lightbox="lightbox-image" data-title="Generated Image">
-          <img id="outputImg">
-        </a>
-        <div class="download">
-          <button id="downloadButton" type="button" class="btn btn-primary btn-lg">
-            <i class="bi bi-download" style="margin-right: 0.75rem;"></i>
-            Download
-          </button>
-        </div>
+      <div class="socials">
+        <a href="https://www.linkedin.com/in/gianluca-moro/" target="_blank"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/gianluca-moro" target="_blank"><i class="bi-github"></i></a>
+        <a href="https://gianluca-moro.github.io/" target="_blank"><i class="bi bi-person-circle"></i></a>
       </div>
-    </div>
-  </main>
-
-  <footer>
-    <div class="copyright">
-      <p>Copyright &copy; 2025 <span id="year"></span>, Gianluca Moro</p>
-    </div>
-    <div class="socials">
-      <a href="https://www.linkedin.com/in/gianluca-moro/" target="_blank"><i class="bi bi-linkedin"></i></a>
-      <a href="https://github.com/gianluca-moro" target="_blank"><i class="bi-github"></i></a>
-      <a href="https://gianluca-moro.github.io/" target="_blank"><i class="bi bi-person-circle"></i></a>
-    </div>
-  </footer>
+    </footer>
+  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
@@ -87,6 +104,58 @@
         document.getElementById("year").innerHTML = '- ' + new Date().getFullYear();
       }
     };
+
+    const header = document.getElementById('header');
+    const footer = document.getElementById('footer');
+    const allSections = document.getElementsByTagName('section');
+    const lastSection = allSections[allSections.length - 1];
+    let headerHeight = header.getBoundingClientRect().height;
+    let footerHeight = footer.getBoundingClientRect().height;
+    let bodyHeight = window.innerHeight;
+    lastSection.style.minHeight = bodyHeight - headerHeight - footerHeight + 'px';
+    window.onresize = () => {
+      bodyHeight = window.innerHeight;
+      headerHeight = header.getBoundingClientRect().height;
+      footerHeight = footer.getBoundingClientRect().height;
+      lastSection.style.minHeight = bodyHeight - headerHeight - footerHeight + 'px';
+    };
+
+    function showSection(sectionId) {
+      document.getElementById(sectionId.replace(/#/, "")).scrollIntoView({ behavior: 'smooth' });
+    }
+
+    const sections = document.getElementById('content').getElementsByClassName('section');
+    function checkSection() {
+      const scrollTop = headerHeight
+      for (let i = 0; i < sections.length; i++) {
+        const section = sections[i];
+        const rect = section.getBoundingClientRect();
+        const sectionId = section.dataset['section']
+        if (rect.top <= scrollTop && rect.bottom > scrollTop) {
+          const reqLink = $("a").filter("[href*=\\#" + sectionId + "]");
+          reqLink
+            .closest("div")
+            .addClass("active")
+            .siblings()
+            .removeClass("active");
+          break;
+        }
+      }
+    }
+
+    $(".nav").on("click", "a", function (e) {
+      e.preventDefault();
+      showSection($(this).attr("href"));
+    });
+
+    $('#content').scroll(function () {
+      checkSection();
+    });
+
+    checkSection();
+
+
+
 
     lightbox.option({
       'disableScrolling': true,
