@@ -29,6 +29,7 @@ body {
 
 header {
   background: rebeccapurple;
+  box-shadow: 0 2px 8px -0px black;
 
   .title {
     display: flex;

@@ -1,0 +1,41 @@
+<div class="inputFormContainer pt-2 mb-5">
+  <div class="inputForm">
+    <div>
+      <label for="formFile" class="form-label">Select Image</label>
+      <input class="form-control" type="file" id="imageInput" accept=".png,.jpg,.jpeg">
+    </div>
+    <div class="row g-3 align-items-center">
+      <div class="col-auto">
+        <label for="numTrianglePoints" class="col-form-label">Number of Triangulation Points: </label>
+      </div>
+      <div class="col-auto">
+        <input type="number" min="250" max="10000" step="1" id="numTrianglePointsValue" class="form-control">
+      </div>
+    </div>
+    <input type="range" class="form-range" min="250" max="10000" value="5000" id="numTrianglePointsSlider">
+    <div class="generateButton">
+      <button type="button" class="btn btn-primary btn-lg" id="generateButton" disabled>Generate</button>
+    </div>
+  </div>
+</div>
+
+<div class="images">
+  <div id="inputImage" class="hidden">
+    <p>Original Image</p>
+    <a id="inputImgAnchor" data-lightbox="lightbox-image" data-title="Original Image">
+      <img id="inputImg">
+    </a>
+  </div>
+  <div id="outputImage" class="hidden">
+    <p>Generated Image</p>
+    <a id="outputImgAnchor" data-lightbox="lightbox-image" data-title="Generated Image">
+      <img id="outputImg">
+    </a>
+    <div class="download">
+      <button id="downloadButton" type="button" class="btn btn-primary btn-lg">
+        <i class="bi bi-download" style="margin-right: 0.75rem;"></i>
+        Download
+      </button>
+    </div>
+  </div>
+</div>
