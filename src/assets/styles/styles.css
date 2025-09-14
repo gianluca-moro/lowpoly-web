@@ -25,6 +25,39 @@ body {
 
 #content {
   overflow-y: scroll;
+
+  #sectionDivider {
+    border: none;
+    height: 2px;
+    width: 70%;
+    margin: auto;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    background-color: lightgray
+  }
+}
+
+.section {
+
+  margin: 0 1rem;
+
+  .title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .title-underline {
+      width: 4em;
+      height: 3px;
+      background-color: #101724;
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  .description {
+    display: flex;
+    justify-content: center;
+  }
 }
 
 header {
@@ -143,6 +176,30 @@ footer {
   display: none;
 }
 
+
+.examples {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 5rem;
+
+  p {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  a {
+    width: 75%;
+    margin: auto;
+
+    img {
+      width: 100%;
+      margin-bottom: 0.5rem;
+      border: thin solid whitesmoke;
+      border-radius: 10px;
+    }
+  }
+}
 
 
 @media (min-width: 481px) {
