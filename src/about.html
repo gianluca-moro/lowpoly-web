@@ -1,6 +1,59 @@
-<div class="title" style="height: 800px;">
+<div class="title">
   <h2>
     About
   </h2>
   <div class="title-underline"></div>
+</div>
+<div class="description">
+  <p>
+    This tool can be used to convert images to <a href="https://en.wikipedia.org/wiki/Low_poly"
+      target="_blank">Low-Poly</a> art style. <br>
+    I really like low-poly art and thus, I wanted to create a tool that I can use to automatically create low-poly
+    images.
+  </p>
+</div>
+<div class="about mt-3">
+  The converter is implemented in JavaScript and works as follows
+  <ol>
+    <li>The image is converted to gray-scale</li>
+    <li>
+      We then blur the gray-scale image twice with different blur strengths and calculate the difference between those
+      images for each pixel. <br>
+      This will give a higher difference value for pixels that are "more interesting", e.g., on object edges or where
+      colours change, while giving lower difference values for pixels in areas that are more uniform. <br>
+      For the image blur, we are using <a href="https://www.npmjs.com/package/stackblur-canvas"
+        target="_blank">stackblur-canvas (npm)</a>, which gives us an almost Gaussian blur with great performance.
+    </li>
+    <li>
+      We then perform <a href="https://en.wikipedia.org/wiki/Rejection_sampling" target="_blank">Rejection Sampling</a>
+      on these pixel differences to randomly select n (= number of triangulation points) pixels. <br>
+      Note that since we perform the rejection sampling on the pixel differences, pixels that are "more interesting"
+      will be sampled with a higher probability. This ensures that we have more smaller triangles in more interesting
+      areas while fewer but larger triangles in less interesting areas.
+    </li>
+    <li>
+      We then use <a href="https://en.wikipedia.org/wiki/Delaunay_triangulation" target="_blank">Delaunay
+        Triangulation</a> to triangulate the sampled pixels, i.e., we create a set of triangles that do not overlap.
+      <br>
+      For the triangulation, we are using <a href="https://www.npmjs.com/package/delaunator" target="_blank">
+        Delaunator (npm)</a>.
+    </li>
+    <li>
+      Finally, we draw the triangles on the output image.
+      To get the colour for each triangle, we calculate the midpoint of the triangle and pick the colour of the original
+      image at that pixel.
+    </li>
+  </ol>
+  The source code is available on
+  <a href="https://github.com/gianluca-moro/lowpoly-js" target="_blank">GitHub (lowpoly-js)</a>.
+  I have also implemented the algorithm in Python, which is also available on
+  <a href="https://github.com/gianluca-moro/lowpoly-python" target="_blank">GitHub (lowpoly-python)</a>.
+</div>
+<div class="description mt-5">
+  <p>
+    If you want to learn more about myself, please check out my
+    <a href="https://gianluca-moro.github.io/" target="_blank">personal website</a>,
+    <a href="https://www.linkedin.com/in/gianluca-moro/" target="_blank">LinkedIn</a> or
+    <a href="https://github.com/gianluca-moro" target="_blank">GitHub page</a>.
+  </p>
 </div>
